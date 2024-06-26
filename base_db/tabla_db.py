@@ -9,6 +9,7 @@ class Tabla:
     # CRUD
     def crear(self, valores, de_bbdd=False):
         if de_bbdd:
+            # del modelo --> args = (valores) # (())
             for campo, valor in zip(self.campos, *valores):
                 setattr(self, campo, valor)
         else:

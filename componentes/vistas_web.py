@@ -94,3 +94,8 @@ def crear(tipo):
 @app.route('/api-edtech')
 def api_docu():
     return render_template('./api-edtech/docu.html')
+
+# ****** Manejo de URL incorrecta ******
+@app.errorhandler(404)
+def lanzar_error(error):
+    return render_template("./404.html", ctx=error)

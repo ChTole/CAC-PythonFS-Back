@@ -173,7 +173,3 @@ def eliminar_cta_perfil():
         respuesta = {'mensaje': 'no se recibieron datos.'}
         
     return jsonify(respuesta)
-    
-@app.errorhandler(404)
-def lanzar_error(error):
-    return render_template("./404.html", ctx=error)
