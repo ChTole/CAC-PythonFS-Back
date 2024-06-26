@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}
+    API-EdTech 
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<h2 class="color5">Recursos de la API</h2>
+<div class="articulos unaColumna">
+    <article>
+        <p>La aplicación sólo acepta consumo web desde: <a href="https://chtole.github.io/CAC-PythonFS-Front/" target="_blank">Proyecto EdTech</a></p>
+        <p>Los <i>endpoints</i> de acceso creados para la misma son:</p>
+        <ul>
+            <li><a href="{{ url_for('api_cursos') }}" target="_blank">/api-edtech/cursos</a></li>
+            <li><a href="{{ url_for('api_temas') }}" target="_blank">/api-edtech/temas</a></li>
+            <li><a href="{{ url_for('api_docentes') }}" target="_blank">/api-edtech/docentes</a></li>
+        </ul>
+    </article>
+</div>
+
+
+{% endblock contenido %}
+
+

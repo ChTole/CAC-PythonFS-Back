@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h2 class="color5">Detalle del registro</h2>
+<div class="articulos unaColumna">
+    <article>
+        <form action="{{ url_for('modificar', tipo=tipo, id=datos.id) }}" method="POST">
+            <table>
+                <tbody>
+                    {% for campo, valor in datos.__dict__.items()  %}
+                    <tr>
+                    <td><label for="{{ campo.capitalize() }}">{{ campo.capitalize() }}:</label></td>
+                    {% if campo == "id" %}
+                    <td id="idRegistro">{{ valor }}</td>
+                    {% else %}
+                        <td><input name= "{{ campo }}" value="{{ valor }}" disabled></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="2">
+                            <button class="color2" id="habilitarCampos">Modificar</button>
+                            <input type="submit" value="Guardar" class="color2" id="guardarCambios" disabled>
+                        </td>
+                        <td>
+                            <a class="color4" href="{{ url_for('eliminar', tipo=tipo, id=datos.id) }}">Eliminar</a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </article>
+</div>
+{% endblock contenido %}
+
+{% block js %}
+    <script src="{{ url_for('static', filename='./js/componentes/detalleModelo.js') }}"></script>
+{% endblock js %}

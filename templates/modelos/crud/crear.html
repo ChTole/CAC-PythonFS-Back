@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block contenido %}
+<h2 class="color5">Detalle del registro</h2>
+<div class="articulos unaColumna">
+    <article>
+        <form action="{{ url_for('crear', tipo=tipo) }}" method="POST">
+            <table>
+                <tbody>
+                    {% for campo in modelo  %}
+                    <tr>
+                        <td><label for="{{ campo }}">{{ campo.capitalize() }}:</label></td>
+                        <td><input name="{{ campo }}"></td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td colspan="3">
+                            <input type="submit" value="Guardar" class="color2" id="guardarCambios">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </article>
+</div>
+{% endblock contenido %}

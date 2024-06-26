@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Cursos EdTech 
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h2 class="color5">Cursos disponibles en la aplicación</h2>
+<div class="articulos unaColumna">
+    <article>
+        {% if mensaje != None %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <td class="bold">Tema</td>
+                    <td class="bold">Inicio</td>
+                    <td class="bold">Docente</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for curso in cursos %}
+                <tr>
+                    <td><a href="{{ url_for('ver_detalle', id=curso.id, tipo='curso') }}" title="Ver detalle">{{ curso.tema_id }}</a></td>
+                    <td>{{ curso.fecha_inicio.strftime('%d-%m-%Y') }}</td>
+                    <td>{{ curso.docente }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+    <div class="crear">
+        <a href="{{ url_for('crear', tipo='curso') }}" class="menuSPA color2">Crear curso</a>
+    </div>
+</div>
+
+{% endblock contenido %}

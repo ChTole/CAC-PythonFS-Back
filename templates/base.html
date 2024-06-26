@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sitio modelo de plataforma educativa, diseñado para la implementación del material visto durante el curso Python Fullstack del programa Codo a codo." />
+    <meta name="author" content="Christian Toledo"/>
+    <meta name="keywords" content="educación, desarrollo web, frontend, backend, API-REST, MVT, MVC">
+    <link rel="icon" type="image/x-icon" href="./icon/laptop-code-solid.svg">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/estilos.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/fuentes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='./css/colores.css') }}">
+    <title>
+        {% block titulo %}
+        Administración EdTech 
+        {% endblock titulo %}
+    </title>
+</head>
+<body class="color3">
+    <header class="color1">
+        <h1><a href="{{ url_for('inicio') }}">Administración EdTech</a></h1>
+        <nav>
+            <img class="menuBurger" src="{{ url_for('static', filename='./media/icon/bars-solid.svg') }}" alt="Ménu para dispositivos móviles" title="Menú">
+            <div id="menuPpal" class="oculto visibleH">
+                <a href="{{ url_for('cursos') }}" class="menuSPA color1">Cursos</a>
+                <a href="{{ url_for('docentes') }}" class="menuSPA color1">Docentes</a>
+                <a href="{{ url_for('estudiantes') }}" class="menuSPA color1">Estudiantes</a>
+                <a href="{{ url_for('api_docu') }}" class="menuSPA color1">API EdTech</a>
+            </div>
+        </nav>
+    </header>
+    <main class="color3">
+        <section id="contenidoSPA">
+            <!-- Contenido dinámico -->
+            {% block contenido %}
+            <h2 class="color5">Acerca del Proyecto EdTech</h2>
+            <div class="articulos unaColumna">
+                <article>
+                    <p>Este sitio fué desarrollado como guía para el curso de <b>Python Fullstack</b> del programa Codo a Codo.</p>
+                    <p>Información disponible y funcionalidad:</p>
+                    <ul>
+                        <li>- Sitio simil «back office»;</li>
+                        <li>- API pública y con conexión para el frontend desarrollado.</li>
+                    </ul>
+                </article>
+            </div>
+            {% endblock contenido %}
+        </section>
+    </main>
+    <div>
+        <a href="https://github.com/ChTole/CAC-PythonFS-Front" target="_blank"><img src="{{ url_for ('static', filename='./media/img/enlacesIco/GitHub.png') }}" class="logoFijo" alt="Link a código fuente" title="Ver código fuente"></a>
+    </div>
+    <footer class="color1">
+        <p>Sitio sin licencia - 2024</p>
+        <p>Creado con fines educativos por Christian Toledo</p>
+        <p>
+            <a class="linksCH logo" href="https://chtole.pythonanywhere.com/" target="_blank">
+                <img src="{{ url_for('static', filename='./media/img/enlacesIco/enlace-web.png') }}" alt="WebSite" class="logo">
+            </a>
+            <a class="linksCH logo" href="https://github.com/ChTole" target="_blank">
+                <img src="{{ url_for('static', filename='./media/img/enlacesIco/githubIco.png') }}" alt="GitHub" class="logo">
+            </a>
+            <a class="linksCH logo" href="https://www.linkedin.com/in/christianarieltoledo/" target="_blank">
+                <img src="{{ url_for('static', filename='./media/img/enlacesIco/linkedin.png') }}" alt="LinkedIn" class="logo">
+            </a>
+        </p>
+    </footer>
+
+    {% block js %}
+    
+    <script src="{{ url_for('static', filename='./js/main.js') }}" type="module"></script>
+    
+    {% endblock js %}
+</body>
+</html>

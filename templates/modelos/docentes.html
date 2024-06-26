@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Docentes EdTech 
+{% endblock titulo %}
+
+
+{% block contenido %}
+
+<h2 class="color5">Docentes asociados a la aplicación</h2>
+<div class="articulos unaColumna">
+    <article>
+        {% if mensaje %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <td class="bold">Nombre y apellido</td>
+                    <td class="bold">CUIT</td>
+                </tr>
+            </thead>
+            <tbody>
+            {% for docente in docentes %}
+                <tr>
+                    <td><a href="{{ url_for('ver_detalle', id=docente.id, tipo='docente') }}" title="Ver detalle">{{ docente.nombre }} {{ docente.apellido }}</a></td>
+                    <td>{{ docente.cuit }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+    <div class="crear">
+        <a href="{{ url_for('crear', tipo='docente') }}" class="menuSPA color2">Crear docente</a>
+    </div>
+</div>
+
+{% endblock contenido %}

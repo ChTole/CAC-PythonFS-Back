@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block titulo %}
+    Estudiantes EdTech 
+{% endblock titulo %}
+
+{% block contenido %}
+
+<h2 class="color5">Estudiantes inscriptos en la aplicación</h2>
+<div class="articulos unaColumna">
+    <article>
+        {% if mensaje %}
+            <h3>{{ mensaje }}</h3>
+        {% endif %}
+        <table>
+            <thead>
+                <tr>
+                    <td class="bold">Nombre</td>
+                    <td class="bold">Apellido</td>
+                    <td class="bold">Correo</td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for estudiante in estudiantes %}
+                <tr>
+                    <td><a href="{{ url_for('ver_detalle', id=estudiante.id, tipo='estudiante') }}" title="Ver detalle">{{ estudiante.nombre }}</a></td>
+                    <td><a href="{{ url_for('ver_detalle', id=estudiante.id, tipo='estudiante') }}" title="Ver detalle">{{ estudiante.apellido }}</a></td>
+                    <td><a href="{{ url_for('ver_detalle', id=estudiante.id, tipo='estudiante') }}" title="Ver detalle">{{ estudiante.correo }}</a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </article>
+    <div class="crear">
+        <a href="{{ url_for('crear', tipo='estudiante') }}" class="menuSPA color2">Crear estudiante</a>
+    </div>
+</div>
+
+{% endblock contenido %}
